@@ -62,11 +62,10 @@ const PendingInvitations = ({ team }: { team: Team }) => {
     <div className="space-y-3">
       <div className="space-y-3">
         <h2 className="text-xl font-medium leading-none tracking-tight">
-          Pending Invitations
+          {t('pending-invitations')}
         </h2>
         <p className="text-sm text-gray-500 dark:text-gray-400">
-          Invitations that have been sent to users but have not yet been
-          accepted.
+          {t('description-invitations')}
         </p>
       </div>
       <table className="text-sm table w-full border-b dark:border-base-200">
@@ -92,7 +91,7 @@ const PendingInvitations = ({ team }: { team: Team }) => {
                 <td>{new Date(invitation.createdAt).toDateString()}</td>
                 <td>
                   <Button
-                    size="xs"
+                    size="sm"
                     color="error"
                     variant="outline"
                     onClick={() => {

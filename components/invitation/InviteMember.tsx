@@ -28,9 +28,9 @@ const InviteMember = ({
       role: availableRoles[0].id,
     },
     validationSchema: Yup.object().shape({
-      email: Yup.string().email().required('Email is a required field'), // Added error message
+      email: Yup.string().email().required(t('require-email')), // Added error message
       role: Yup.string()
-        .required('Role is required')
+        .required(t('required-role'))
         .oneOf(availableRoles.map((r) => r.id)),
     }),
     onSubmit: async (values) => {
@@ -63,7 +63,7 @@ const InviteMember = ({
         type="button"
         size="sm"
         shape="circle"
-        className="absolute right-2 top-2 rounded-full"
+        className="absolute right-2 top-2 rounded-full btn-outline"
         onClick={toggleVisible}
         aria-label={t('close')}
       >
@@ -83,7 +83,7 @@ const InviteMember = ({
                 color={
                   formik.touched.email && formik.errors.email
                     ? 'error'
-                    : 'primary'
+                    : undefined
                 }
                 onChange={formik.handleChange}
                 value={formik.values.email}
@@ -91,7 +91,7 @@ const InviteMember = ({
                 required
               />
               <select
-                className="select-bordered select flex-grow"
+                className="select-bordered select flex-grow rounded"
                 name="role"
                 onChange={formik.handleChange}
                 required
